@@ -5,6 +5,7 @@ echo " add master node ip to "
 sed  "s/masternodeip/${masternode}/g" ./cve-poc-deployment.yaml.template > ./cve-poc-deployment.yaml 
 echo "sed done"
 echo "Start creating the services for web and payload pod "
+kubectl create ns log4j
 kubectl -n log4j apply -f cve-web-deployment.yaml
 kubectl -n log4j apply -f cve-web-service.yaml
 kubectl -n log4j apply -f cve-poc-service.yaml
